@@ -12,7 +12,6 @@ one_MASS_active_sensors = [(32+33+35+34+35+33+33+34+34+35)/10,
                            (46+51+50+50+48+48+51+47+48+49)/10, 
                            (65+62+65+67+65+68+62+64+64+64)/10]
 
-
 # 100x100 300 sensors, rs = 15 rc = 30
 two_GAMA_active_sensors = [81, 115, 147] 
 two_MASS_active_sensors = [(66+63+62+61+61+61+61+60+59+62)/10, 
@@ -24,8 +23,6 @@ three_GAMA_active_sensors = [125, 160, 211]
 three_MASS_active_sensors = [(84+84+82+86+88+83+82+82+84+86)/10, 
                              (120+118+121+122+116+119+117+122+119+115)/10, 
                              (151+152+152+159+150+150+154+149+147+148)/10]
-
-
 # sensing range tests
 sensing_ranges = [20, 30, 40, 50, 60]
 four_GAMA_active_sensors = [67, 33, 20, 13, 10]
@@ -35,12 +32,9 @@ four_MASS_active_sensors = [(50+50+49+50+49+50+49+50+54+53)/10,
                             (11+11+12+11+12+12+11+11+12+12)/10, 
                             (8+8+8+8+7+8+9+8+8+9)/10
                             ]
-
 bar_width = 0.35
-
 r1 = np.arange(len(degrees_of_coverage))
 r2 = [x + bar_width for x in r1]
-
 fig, axs = plt.subplots(2, 2, figsize=(12, 8))
 
 axs[0, 0].bar(r1, one_MASS_active_sensors, color='red', width=bar_width, edgecolor='grey', label=r'MAGI$\it{k}$')
@@ -79,17 +73,21 @@ axs[1, 1].set_xticklabels(sensing_ranges)
 axs[1, 1].set_title(r'd. 100x100 RoI, $n = 300$, $\it{k} = 3$, $r_c = 2r_s$')
 axs[1, 1].legend()
 
-
 plt.tight_layout()
 plt.show()
 
 
 # communication range tests
-
 communication_ranges = [10, 15, 20, 25, 30]
 bar_width = 0.5
 r1 = np.arange(len(communication_ranges))
 r2 = [x + bar_width for x in r1]
+
+k1_active_sensors = [(74+77+79+76+77+81+84+76+75+83)/10,
+                     (47+45+49+47+49+47+47+49+48+47)/10,
+                     (35+35+38+38+33+37+35+35+35+36)/10,
+                     (32+32+36+35+31+34+32+30+33+32)/10,
+                     (34+32+34+33+31+31+35+34+32+34)/10]
 
 five_MASk_active_sensors = [(92+88+91+89+88+93+88+93+94+93)/ 10,
                             (67+61+59+62+67+64+62+63+68+63)/ 10,
@@ -109,6 +107,12 @@ seven_MASk_active_sensors = [(122+126+124+123+122+123+120+124+121+121)/ 10,
                             (111+114+112+110+111+116+112+115+113+116)/ 10,
                             (118+114+112+114+115+114+119+111+114+115)/ 10]
 
+k5_active_sensors = [(138+142+144+137+141+145+144+147+144+142)/10,
+                     (138+137+144+137+136+138+139+140+140+142)/10,
+                     (139+140+137+138+143+141+136+139+138+140)/10,
+                     (141+139+145+137+135+138+141+139+140+142)/10,
+                     (140+141+141+137+137+145+137+141+141+139)/10]
+
 eight_MASk_active_sensors = [(92+88+91+89+88+93+88+93+94+93)/ 10,
                             (67+61+59+62+67+64+62+63+68+63)/ 10,
                             (62+63+60+61+60+60+62+59+62+60)/ 10,
@@ -127,48 +131,60 @@ ten_MASk_active_sensors = [(122+126+124+123+122+123+120+124+121+121)/ 10,
                             (111+114+112+110+111+116+112+115+113+116)/ 10,
                             (118+114+112+114+115+114+119+111+114+115)/ 10]
 
-fig, axs = plt.subplots(2, 2, figsize=(12, 8))
 
-axs[0, 0].bar(r1, five_MASk_active_sensors, color='red', width=bar_width, edgecolor='grey')
+fig, axs = plt.subplots(3, 2, figsize=(12, 16))
+
+axs[0, 0].bar(r1, k1_active_sensors, color='red', width=bar_width, edgecolor='grey')
 axs[0, 0].set_xlabel('Communication Range', fontweight='bold')
 axs[0, 0].set_ylabel('Number of Active Sensors', fontweight='bold')
 axs[0, 0].set_xticks(r1)
 axs[0, 0].set_xticklabels([r'$\frac{2}{3}r_s$', r'$r_s$', r'$\frac{4}{3}r_s$', r'$\frac{5}{3}r_s$', r'$2r_s$']) 
-axs[0, 0].set_title(r'a. $\it{k} = 2$, RoI = 100x100, $n = 300$, $r_s = 15$')
+axs[0, 0].set_title(r'a. $\it{k} = 1$,  RoI = 100x100, $n = 300$, $r_s = 15$')
 
-axs[0, 1].bar(r1, six_MASk_active_sensors, color='red', width=bar_width, edgecolor='grey')
+axs[0, 1].bar(r1, five_MASk_active_sensors, color='red', width=bar_width, edgecolor='grey')
 axs[0, 1].set_xlabel('Communication Range', fontweight='bold')
 axs[0, 1].set_ylabel('Number of Active Sensors', fontweight='bold')
 axs[0, 1].set_xticks(r1)
 axs[0, 1].set_xticklabels([r'$\frac{2}{3}r_s$', r'$r_s$', r'$\frac{4}{3}r_s$', r'$\frac{5}{3}r_s$', r'$2r_s$']) 
-axs[0, 1].set_title(r'b. $\it{k} = 3$,  RoI = 100x100, $n = 300$, $r_s = 15$')
+axs[0, 1].set_title(r'b. $\it{k} = 2$, RoI = 100x100, $n = 300$, $r_s = 15$')
 
-axs[1, 0].bar(r1, seven_MASk_active_sensors, color='red', width=bar_width, edgecolor='grey')
+axs[1, 0].bar(r1, six_MASk_active_sensors, color='red', width=bar_width, edgecolor='grey')
 axs[1, 0].set_xlabel('Communication Range', fontweight='bold')
 axs[1, 0].set_ylabel('Number of Active Sensors', fontweight='bold')
 axs[1, 0].set_xticks(r1)
 axs[1, 0].set_xticklabels([r'$\frac{2}{3}r_s$', r'$r_s$', r'$\frac{4}{3}r_s$', r'$\frac{5}{3}r_s$', r'$2r_s$']) 
-axs[1, 0].set_title(r'c. $\it{k} = 4$,  RoI = 100x100, $n = 300$, $r_s = 15$')
+axs[1, 0].set_title(r'c. $\it{k} = 3$,  RoI = 100x100, $n = 300$, $r_s = 15$')
 
-
-axs[1, 1].plot(communication_ranges, eight_MASk_active_sensors, color='red', label=r'$\it{k}=2$')
-axs[1, 1].plot(communication_ranges, nine_MASk_active_sensors, color='red', linestyle='--', linewidth=2, label=r'$\it{k}=3$')
-axs[1, 1].plot(communication_ranges, ten_MASk_active_sensors, color='red', linestyle=':', linewidth=2, label=r'$\it{k}=4$')
+axs[1, 1].bar(r1, seven_MASk_active_sensors, color='red', width=bar_width, edgecolor='grey')
 axs[1, 1].set_xlabel('Communication Range', fontweight='bold')
 axs[1, 1].set_ylabel('Number of Active Sensors', fontweight='bold')
-axs[1, 1].set_xticks([10, 15, 20, 25, 30]) 
-# communication_range_labels = [r'$\frac{2}{3}r_s$', r'$r_s$', r'$\frac{3}{2}r_s$', r'$2r_s$', r'$2.5r_s$']
+axs[1, 1].set_xticks(r1)
 axs[1, 1].set_xticklabels([r'$\frac{2}{3}r_s$', r'$r_s$', r'$\frac{4}{3}r_s$', r'$\frac{5}{3}r_s$', r'$2r_s$']) 
-axs[1, 1].set_title(r'd. RoI = 100x100, $n = 300$, $r_s$ = 15')
-axs[1, 1].legend()
+axs[1, 1].set_title(r'd. $\it{k} = 4$,  RoI = 100x100, $n = 300$, $r_s = 15$')
 
+axs[2, 0].bar(r1, k5_active_sensors, color='red', width=bar_width, edgecolor='grey')
+axs[2, 0].set_xlabel('Communication Range', fontweight='bold')
+axs[2, 0].set_ylabel('Number of Active Sensors', fontweight='bold')
+axs[2, 0].set_xticks(r1)
+axs[2, 0].set_xticklabels([r'$\frac{2}{3}r_s$', r'$r_s$', r'$\frac{4}{3}r_s$', r'$\frac{5}{3}r_s$', r'$2r_s$']) 
+axs[2, 0].set_title(r'e. $\it{k} = 5$,  RoI = 100x100, $n = 300$, $r_s = 15$')
 
+axs[2, 1].plot(communication_ranges, k1_active_sensors, color='red', linewidth=2, label=r'$\it{k}=1$')
+axs[2, 1].plot(communication_ranges, eight_MASk_active_sensors, color='red', linestyle='-.', label=r'$\it{k}=2$')
+axs[2, 1].plot(communication_ranges, nine_MASk_active_sensors, color='red', linestyle='--', linewidth=2, label=r'$\it{k}=3$')
+axs[2, 1].plot(communication_ranges, ten_MASk_active_sensors, color='red', linestyle=':', linewidth=2, label=r'$\it{k}=4$')
+axs[2, 1].plot(communication_ranges, k5_active_sensors, color='red', linestyle=(0, (5, 10)), linewidth=2, label=r'$\it{k}=5$')
+axs[2, 1].set_xlabel('Communication Range', fontweight='bold')
+axs[2, 1].set_ylabel('Number of Active Sensors', fontweight='bold')
+axs[2, 1].set_xticks([10, 15, 20, 25, 30]) 
+axs[2, 1].set_xticklabels([r'$\frac{2}{3}r_s$', r'$r_s$', r'$\frac{4}{3}r_s$', r'$\frac{5}{3}r_s$', r'$2r_s$']) 
+axs[2, 1].set_title(r'f. RoI = 100x100, $n = 300$, $r_s$ = 15')
+axs[2, 1].legend()
 
 plt.tight_layout()
 plt.show()
 
 
-# Sample data
 active_sensors_pre = [(13, 23), (45, 16), (26, 31), (10, 11), (7, 35), (0, 31), (11, 21), (46, 36), (34, 35), (44, 36), 
                       (0, 41), (50, 12), (6, 48), (34, 38), (9, 4), (12, 24), (40, 9), (30, 45), (2, 34), (17, 23), 
                       (45, 41), (33, 18), (34, 32), (1, 8), (15, 16), (34, 27), (13, 34), (48, 1), (35, 5), (24, 18), 
@@ -218,7 +234,7 @@ ax1.scatter(x_inactive_pre, y_inactive_pre, edgecolor='black', facecolor='none',
 add_base_station(ax1, base_station_x, base_station_y, base_station_size, 'green')
 ax1.set_xlim(0, 50)
 ax1.set_ylim(0, 50)
-ax1.set_title(r'ON/OFF Sensors Before MAGI$\it{k}$')
+ax1.set_title(r'$\it{ON}$/$\it{OFF}$ Sensors Before MAGI$\it{k}$')
 ax1.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), ncol=2, handlelength=0.7)
 
 ax2.scatter(x_active_post, y_active_post, color='red', label='ON sensor')
@@ -226,11 +242,10 @@ ax2.scatter(x_inactive_post, y_inactive_post, edgecolor='black', facecolor='none
 add_base_station(ax2, base_station_x, base_station_y, base_station_size, 'green')
 ax2.set_xlim(0, 50)
 ax2.set_ylim(0, 50)
-ax2.set_title(r'ON/OFF Sensors Post MAGI$\it{k}$')
+ax2.set_title(r'$\it{ON}$/$\it{OFF}$ Sensors Post MAGI$\it{k}$')
 ax2.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), ncol=2, handlelength=0.7)
 
 plt.tight_layout()
 plt.show()
-
 
 
