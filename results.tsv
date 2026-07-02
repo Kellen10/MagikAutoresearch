@@ -1,0 +1,23 @@
+commit	active_sensors	feasible	status	description
+77d92cd	150.50	True	baseline	medium scenarios only; original random solver; runs=1 generations=5 due runtime
+working-tree	71.00	True	kept	medium scenarios only; greedy deactivation; runs=1 generations=5
+working-tree	71.50	True	kept	medium scenarios only; greedy deactivation; runs=5 generations=250
+working-tree	71.50	True	reverted	medium scenarios only; multiple greedy removal orders; no improvement over kept solver
+working-tree	70.50	True	kept	medium scenarios only; one-for-many reactivation swap; runs=1 generations=5
+working-tree	71.30	True	kept	medium scenarios only; one-for-many reactivation swap; runs=5 generations=250
+working-tree	71.30	True	reverted	medium scenarios only; iterative reactivation swaps; no improvement over kept solver
+working-tree	71.00	True	kept	medium scenarios only; top-20 reactivation swap candidates; runs=5 generations=250
+working-tree	70.70	True	kept	medium scenarios only; top-50 reactivation swap candidates; runs=5 generations=250
+working-tree	70.50	True	kept	medium scenarios only; top-100 reactivation swap candidates; runs=5 generations=250
+working-tree	70.20	True	kept	medium scenarios only; top-150 reactivation swap candidates; runs=5 generations=250
+working-tree	70.20	True	reverted	medium scenarios only; reactivation candidate footprint tie-breaker; no improvement over kept solver
+working-tree	73.50	True	reverted	medium scenarios only; small-footprint deactivation order; smoke worse than kept solver
+working-tree	70.20	True	kept	medium scenarios only; final verification with generations-controlled reactivation cap; runs=5 generations=250
+working-tree	70.30	True	reverted	medium scenarios only; cap 120; cheaper but missed target by one active sensor
+working-tree	70.20	True	kept	medium scenarios only; cap 136 reproduces target; runs=5 generations=136
+working-tree	70.20	True	kept	medium scenarios only; tuned caps k2=110 k3=136 plus cached communication graph; runs=5 generations=250 runtime=86.1s
+working-tree	71.50	True	kept	medium scenarios only; O(n^2 log n) one-pass bounded candidates; runs=5 generations=250 runtime=44.4s
+working-tree	70.60	True	kept	medium scenarios only; O(n^2 log n) bounded candidates with fixed reactivation batches and order modes; runs=5 generations=250 runtime=68.7s
+working-tree	70.90	True	reverted	medium scenarios only; O(n^2 log n) candidate constant 4logn; cheaper but worse score
+working-tree	70.30	True	kept	medium scenarios only; cached candidate metrics with fixed O(log n) menu; runs=5 generations=250 runtime=27.7s
+working-tree	70.30	True	kept	medium scenarios only; reduced winning batch menu by k; runs=5 generations=250 runtime=4.3s
