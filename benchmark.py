@@ -1,12 +1,12 @@
 """
 Fixed MAGIk benchmark entry point.
 
-The solver comes from train.py, but scoring and scenarios come from prepare.py.
+The solver comes from MAGIk.py, but scoring and scenarios come from prepare.py.
 """
 
 from __future__ import annotations
 
-from train import main
+from MAGIk import main
 
 
 if __name__ == "__main__":
